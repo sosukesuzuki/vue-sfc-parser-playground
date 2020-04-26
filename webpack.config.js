@@ -1,8 +1,8 @@
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const path = require("path");
 
 const MODE = process.env.NODE_ENV || "development";
-const PROD = MODE === "production";
 const DEV = MODE === "development";
 
 const copyRules = [
@@ -17,6 +17,9 @@ module.exports = {
   devtool: DEV ? "inline-source-map" : "source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "~": path.join(__dirname, "/src"),
+    },
   },
   devServer: {
     historyApiFallback: true,

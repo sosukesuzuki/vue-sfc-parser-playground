@@ -1,9 +1,5 @@
-import { h as render, createApp, defineComponent } from "vue";
-
-export function h(c: any, o: any, ...args: any): any {
-  const arg = [...args] as any[];
-  return render(c, o, arg);
-}
+import h from "./h";
+import { createApp, defineComponent } from "vue";
 
 const App = defineComponent({
   render() {
