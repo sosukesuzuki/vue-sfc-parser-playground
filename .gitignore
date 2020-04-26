@@ -1,0 +1,4 @@
+/node_modules
+yarn-error.log
+/vue-sfc-compiler-parser/build/index.js
+/vue-sfc-compiler-parser/node_modules
