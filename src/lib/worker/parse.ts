@@ -1,8 +1,10 @@
-export let vueSFCParser:
-  | typeof import("../../../vue-sfc-compiler-parser")
-  | null = null;
+type Parser = typeof import("../../../vue-sfc-compiler-parser");
 
-export function parseVueSFC(value: string) {
+export let vueSFCParser: Parser | null = null;
+
+export function parseVueSFC(
+  value: string
+): Promise<ReturnType<Parser["parse"]>> {
   return new Promise((resolve, reject) => {
     if (!vueSFCParser) {
       reject("vueSFCParser  is not imported yet.");

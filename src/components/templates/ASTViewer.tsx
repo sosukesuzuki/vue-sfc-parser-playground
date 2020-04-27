@@ -13,8 +13,11 @@ const ASTViewer = defineComponent({
     const WorkerAPI = inject(WorkerStoreKey);
     const astString = ref("");
     watchEffect(async () => {
-      const ast = await WorkerAPI?.parseVueSFC(props.value);
-      astString.value = JSON.stringify(ast, null, 2);
+      if (!WorkerAPI) {
+        return;
+      }
+      const { descriptor } = await WorkerAPI.parseVueSFC(props.value);
+      astString.value = JSON.stringify(descriptor, null, 2);
     });
     return {
       astString,
@@ -27,6 +30,7 @@ const ASTViewer = defineComponent({
           width: "50%",
           height: "calc(100vh - 40px)",
           overflow: "scroll",
+          padding: "10px",
         }}
       >
         <pre>
