@@ -28,7 +28,6 @@ const ASTViewer = defineComponent({
       <div
         style={{
           width: "50%",
-          height: "calc(100vh - 40px)",
           overflow: "scroll",
           padding: "10px",
         }}

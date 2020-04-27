@@ -27,7 +27,7 @@ h1 {
     return (
       <main>
         <Header />
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", height: "calc(100vh - 40px)" }}>
           <CodeEditor value={this.input} onChange={this.update} />
           <ASTViewer value={this.input} />
         </div>
