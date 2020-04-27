@@ -3,9 +3,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const WorkerPlugin = require("worker-plugin");
 const path = require("path");
 
-const MODE = process.env.NODE_ENV || "development";
-const DEV = MODE === "development";
-
 const copyRules = [
   {
     from: __dirname + "/src/index.html",
@@ -14,8 +11,6 @@ const copyRules = [
 ];
 
 module.exports = {
-  mode: MODE,
-  devtool: DEV ? "inline-source-map" : "source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     alias: {
@@ -32,8 +27,15 @@ module.exports = {
     publicPath: "/",
   },
   optimization: {
-    minimize: !DEV,
-    minimizer: DEV ? [] : [new TerserPlugin()],
+    minimizer: [
+      new TerserPlugin({
+        test: /\.m?js(\?.*)?$/i,
+        sourceMap: true,
+        terserOptions: {
+          safari10: true,
+        },
+      }),
+    ],
   },
   module: {
     rules: [
