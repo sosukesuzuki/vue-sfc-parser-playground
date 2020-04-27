@@ -3,6 +3,7 @@ import { defineComponent, inject, ref, watchEffect } from "vue";
 import { WorkerStoreKey } from "~/lib/Store/WorkerStore";
 
 const ASTViewer = defineComponent({
+  name: "ASTViewer",
   props: {
     value: {
       type: String,

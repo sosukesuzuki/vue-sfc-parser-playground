@@ -2,6 +2,7 @@ import h from "~/h";
 import { defineComponent } from "vue";
 
 const Header = defineComponent({
+  name: "Header",
   render() {
     return (
       <header

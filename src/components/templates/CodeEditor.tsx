@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 import { grey } from "~/lib/colors";
 
 const CodeEditor = defineComponent({
+  name: "CodeEditor",
   props: {
     value: {
       type: String,
