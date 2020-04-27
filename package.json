@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write .",
-    "build": "webpack --mode=production",
+    "build": "cd ./vue-sfc-compiler-parser && yarn build && cd .. && webpack --mode=production",
     "dev": "webpack-dev-server --mode=development"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ export default {
     name: "VueSFCCompiler",
   },
   plugins: [
+    require("@rollup/plugin-json")(),
     require("@rollup/plugin-node-resolve")({
       preferBuiltins: true,
     }),
