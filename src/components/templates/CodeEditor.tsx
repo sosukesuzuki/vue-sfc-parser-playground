@@ -1,5 +1,6 @@
 import h from "~/h";
 import { defineComponent } from "vue";
+import { grey } from "~/lib/colors";
 
 const CodeEditor = defineComponent({
   props: {
@@ -15,7 +16,13 @@ const CodeEditor = defineComponent({
   render() {
     return (
       <textarea
-        style={{ width: "50%" }}
+        style={{
+          width: "50%",
+          fontSize: "20px",
+          backgroundColor: grey[7],
+          color: grey[1],
+          padding: "10px",
+        }}
         value={this.value}
         onInput={(e) => {
           this.onChange((e.target as any).value);
