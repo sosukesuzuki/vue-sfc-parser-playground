@@ -1,14 +1,18 @@
-import h from "./h";
-import { createApp, defineComponent } from "vue";
+import h from "~/h";
+import { createApp, provide } from "vue";
+import App from "~/components/App";
+import WorkerAPI from "~/lib/worker/WorkerAPI";
+import WorkerProxy from "./WorkerProxy";
+import { WorkerStoreKey } from "./lib/Store/WorkerStore";
 
-const App = defineComponent({
-  render() {
-    return (
-      <div>
-        <h1>Vue SFC Playground</h1>
-      </div>
-    );
-  },
-});
+async function main(): Promise<void> {
+  const proxy = (await new (WorkerProxy as any)()) as WorkerAPI;
+  createApp({
+    setup() {
+      provide(WorkerStoreKey, proxy);
+      return () => <App />;
+    },
+  }).mount("#root");
+}
 
-createApp(App).mount("#root");
+main();

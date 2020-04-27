@@ -9,6 +9,7 @@
     "dev": "webpack-dev-server --mode=development"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.150",
     "copy-webpack-plugin": "^5.1.1",
     "prettier": "^2.0.5",
     "terser-webpack-plugin": "^2.3.6",
@@ -21,6 +22,8 @@
     "worker-plugin": "^4.0.2"
   },
   "dependencies": {
+    "comlink": "^4.2.0",
+    "lodash": "^4.17.15",
     "postcss": "^7.0.27",
     "vue": "^3.0.0-beta.4"
   }

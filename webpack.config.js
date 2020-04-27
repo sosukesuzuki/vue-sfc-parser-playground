@@ -1,5 +1,6 @@
 const CopyPlugin = require("copy-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const WorkerPlugin = require("worker-plugin");
 const path = require("path");
 
 const MODE = process.env.NODE_ENV || "development";
@@ -37,6 +38,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.w\.ts$/,
+        use: [
+          {
+            loader: "worker-loader",
+            options: {
+              publicPath: process.env.ASSET_HOST || "/",
+              inline: true,
+            },
+          },
+          {
+            loader: "ts-loader",
+          },
+        ],
+      },
+      {
         test: /\.tsx?$/,
         use: [
           {
@@ -50,5 +66,8 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CopyPlugin(copyRules)],
+  plugins: [
+    new CopyPlugin(copyRules),
+    new WorkerPlugin({ globalObject: "self" }),
+  ],
 };
