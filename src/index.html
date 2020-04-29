@@ -44,5 +44,9 @@
 </head>
 <body>
   <div id="root"></div>
-  <script src="./main.js"></script>
+  <script type="module">
+    const rootElement = document.getElementById("root");
+    rootElement.innerHTML = "<h1>...Loading</h1>";
+    import("./main.js");
+  </script>
 </body>
